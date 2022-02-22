@@ -27,12 +27,15 @@ jobs:
         
     - name: Build
       run: | 
-        cmake --build build
+        cd build 
+        cmake --build .
         
     - name: Test
       run: |
-        ctest --test-dir build
+        cd build
+        ctest 
         
     - name: Benchmark
       run: |
-        ./build/lib/tests/benchmark_dlognorm*
+        cd build
+        ./lib/tests/benchmark_dlognorm*
