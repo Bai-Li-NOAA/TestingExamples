@@ -2,19 +2,15 @@
 
 # Simple examples
 # The examples demonstrate how to test TMB functions, but they are not necessarily the best practice. Please see advanced examples for C++ testing examples
-add_library(simple_examples
-  src/absum.hpp
-  src/dlognorm.hpp
-)
+# Because we do not have any .cpp code, only template headers (e.g., src/absum.hpp and src/dlognorm.hpp), so we do not include individule template .hpp files here but use INTERFACE
+add_library(simple_examples INTERFACE)
 
-# When use .hpp as file extension, CMake could not tell what it is and set_target_properties is needed
-set_target_properties(simple_examples
-  PROPERTIES 
-    LINKER_LANGUAGE CXX
-)
-# This code sections will check in all the code from src folder and make the include sections in the .hpp files clean
+# CMake target: 
+# Public (I need the includes and dependents need the includes)
+# Private (Only I need the includes)
+# Interface (Only dependents need the includes)
 target_include_directories(simple_examples
-  PUBLIC
+  INTERFACE
     src
 )
 
