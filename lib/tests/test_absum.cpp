@@ -10,7 +10,7 @@ namespace
 
     double z;
     z = a(2.5, 10.0) + b(2.5, 10.0);
-
+    // equal to with test value and expected value
     EXPECT_EQ(absum(2.5, 10.0), z);
   }
 
